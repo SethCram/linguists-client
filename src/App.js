@@ -34,7 +34,9 @@ function App() {
 
     const getDbFile = async () => {
       try {
-        const response = await axios.get("/getDatabases/" + selectedDbName);
+        const response = await axios.get("/getDatabases/" + selectedDbName, {
+          file_name: selectedDbName
+        });
         setDbFile(response.data);
       } catch (error) {
         console.log(error);
@@ -51,7 +53,10 @@ function App() {
     isFetching = true;
 
     try {
-      const response = await axios.get(`/ask/${selectedDbName}/${userRequestRef}`);
+      const response = await axios.get(`/ask/${selectedDbName}/${userRequestRef}`, {
+        db_id: selectedDbName,
+        question: userRequestRef
+      });
       setSql(response.data.query);
       setResults(response.data.execution_results);
     }
@@ -63,22 +68,45 @@ function App() {
     }
   };
 
+  const handleFileUpload = async (file) => {
+
+    try {
+      const response = await axios.post("/upload/", file);
+      console.log(response.data);
+      //setSelectedDbName(response.data.fileName);
+    } catch (error) {
+      console.log(error);
+    }
+    
+  };
+
   return (
     <section id="app">
       <h5>Capstone-Linguists</h5>
       <h2>Frontend UI</h2>
-      
+
       <form
         className='container app__container'
         onSubmit={handleSubmit}
       >
-        <Dropdown
-          className='app__container__dropdown'
-          options={dbNames}
-          onChange={(fileName) => { setSelectedDbName(fileName) }}
-          value={0}
-          placeholder="Select a database to query..."
-        />
+        <div className='app__container__databases'>
+          <label htmlFor="app__container__file__input">
+            <i className="app__container__upload__icon fa-solid fa-plus"></i>
+          </label>
+          <input
+              type="file"
+              id="app__container__file__input"
+              style={{ display: "none" }} 
+              onChange={file=>{handleFileUpload(file.target.value)}}
+          />
+          <Dropdown
+            className='app__container__dropdown'
+            options={dbNames}
+            onChange={(fileName) => { setSelectedDbName(fileName) }}
+            value={selectedDbName}
+            placeholder="Select a database to query..."
+          />
+        </div>
         <input
           className='app__container__question'
           type="text"
