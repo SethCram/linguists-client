@@ -45,7 +45,9 @@ function App() {
 
   }, [selectedDbName]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
     isFetching = true;
 
     try {
@@ -102,7 +104,7 @@ function App() {
         <button
           className="btn btn-primary app__container__submit"
           type="submit"
-          disabled={isFetching}
+          disabled={isFetching || !userRequestRef || !selectedDbName} //disable btn if fetching or one of inputs not set
         >
           Search
         </button>
