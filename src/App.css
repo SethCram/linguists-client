@@ -1,0 +1,23 @@
+.app__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app__container__question{
+    font-size: 30px;
+    width: 70vw;
+}
+
+.app__container__dropdown{
+    background: none;
+    padding: 50px;
+}
+
+.app__container__submit{
+    margin: 100px;
+}
+
+.app__container__submit:disabled{
+    cursor: not-allowed;
+}
