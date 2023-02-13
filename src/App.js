@@ -90,17 +90,17 @@ function App() {
         onSubmit={handleSubmit}
       >
         <div className='app__container__databases'>
-          <label htmlFor="app__container__file__input">
-            <i className="app__container__upload__icon fa-solid fa-plus"></i>
+          <label htmlFor="app__container__databases__file__input">
+            <i className="app__container__databases__upload__icon fa-solid fa-plus"></i>
           </label>
           <input
               type="file"
-              id="app__container__file__input"
+              id="app__container__databases__file__input"
               style={{ display: "none" }} 
               onChange={file=>{handleFileUpload(file.target.value)}}
           />
           <Dropdown
-            className='app__container__dropdown'
+            className='app__container__databases__dropdown'
             options={dbNames}
             onChange={(fileName) => { setSelectedDbName(fileName) }}
             value={selectedDbName}
