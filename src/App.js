@@ -9,10 +9,12 @@ function App() {
   const [dbNames, setDbNames] = useState(null);
   const [selectedDbName, setSelectedDbName] = useState(null);
   const [dbFile, setDbFile] = useState(null);
-  let isFetching = false;
   const userRequestRef = useRef(null);
   const [sql, setSql] = useState("");
   const [results, setResults] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  
 
   useEffect(() => { //cant detch data in here since using sync funct
     
@@ -50,7 +52,7 @@ function App() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    isFetching = true;
+    setIsFetching(true);
 
     try {
       const response = await axios.get(`/ask/${selectedDbName}/${userRequestRef}`, {
@@ -64,18 +66,24 @@ function App() {
       console.log(error);
     }
     finally {
-      isFetching = false;
+      setIsFetching(false);
     }
   };
 
   const handleFileUpload = async (file) => {
 
+    setIsUploading(true);
+
     try {
       const response = await axios.post("/upload/", file);
       console.log(response.data);
       //setSelectedDbName(response.data.fileName);
-    } catch (error) {
+    }
+    catch (error) {
       console.log(error);
+    }
+    finally {
+      setIsUploading(false);
     }
     
   };
@@ -132,7 +140,7 @@ function App() {
         <button
           className="btn btn-primary app__container__submit"
           type="submit"
-          disabled={isFetching || !userRequestRef || !selectedDbName} //disable btn if fetching or one of inputs not set
+          disabled={isFetching || isUploading || !userRequestRef || !selectedDbName} //disable btn if fetching or one of inputs not set
         >
           Search
         </button>
