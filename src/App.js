@@ -1,21 +1,25 @@
 import './App.css';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
 function App() {
 
   const [dbNames, setDbNames] = useState(null);
+  const [selectedDbName, setSelectedDbName] = useState(null);
   const [dbFile, setDbFile] = useState(null);
   let isFetching = false;
+  const userRequestRef = useRef(null);
+  const [sql, setSql] = useState("");
+  const [results, setResults] = useState([]);
 
   useEffect(() => { //cant detch data in here since using sync funct
     
     const fetchDbs = async () => {
       try {
         //possible problem with WSL reqs CORS auth
-        const response = await axios.get("http://localhost:8000/getDatabases/");  
+        const response = await axios.get("http://localhost:8000/getDatabases/");
 
         setDbNames(response.data);
       } catch (error) {
@@ -24,19 +28,38 @@ function App() {
     }
     fetchDbs();
 
-  }, [])
+  }, []);
 
-  const getDbFile = async (fileName) => {
-    const response = await axios.get("/getDatabases/" + fileName);
+  useEffect(() => {
 
-    return response.data;
-  }
+    const getDbFile = async () => {
+      try {
+        const response = await axios.get("/getDatabases/" + selectedDbName);
+        setDbFile(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+      
+    };
+    getDbFile();
+
+  }, [selectedDbName]);
 
   const handleSubmit = async () => {
     isFetching = true;
 
-    isFetching = false;
-  }
+    try {
+      const response = await axios.get(`/ask/${selectedDbName}/${userRequestRef}`);
+      setSql(response.data.query);
+      setResults(response.data.execution_results);
+    }
+    catch (error) {
+      console.log(error);
+    }
+    finally {
+      isFetching = false;
+    }
+  };
 
   return (
     <section id="app">
@@ -50,7 +73,7 @@ function App() {
         <Dropdown
           className='app__container__dropdown'
           options={dbNames}
-          onChange={(fileName) => { setDbFile(getDbFile(fileName)) }}
+          onChange={(fileName) => { setSelectedDbName(fileName) }}
           value={0}
           placeholder="Select a database to query..."
         />
@@ -58,7 +81,24 @@ function App() {
           className='app__container__question'
           type="text"
           placeholder='Enter a request..'
+          ref={userRequestRef}
         />
+        {sql && 
+          <>
+            <label>SQL Generated</label>
+            <p>{sql}</p>
+          </>
+        }
+        {results && console.log(results) && // not sure why label's showing up
+          <>
+            <label>SQL Results</label>
+            <ul>
+              {results.map((rslt, i) => (
+                <li key={i}>{rslt}</li>
+              ))}
+            </ul>
+          </>
+        }
         <button
           className="btn btn-primary app__container__submit"
           type="submit"
