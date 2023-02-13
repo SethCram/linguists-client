@@ -107,6 +107,11 @@ function App() {
           Search
         </button>
       </form>
+      {selectedDbName &&
+        <>
+          {/* Give a description of the selected database + show it in a graphical fashion */ }
+        </>
+      }
     </section>
   );
 }
