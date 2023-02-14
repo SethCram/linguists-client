@@ -107,16 +107,6 @@ img {
   object-fit: cover;
 }
 
-input {
-  border: none;
-  background: none;
-  color: var(--color-white);
-}
-
-input::placeholder{
-  color: var(--color-light);
-}
-
 /* MEDIA QUERIES (MEDIUM DEVICES) */
 
 /* For tablets */

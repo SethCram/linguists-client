@@ -1,5 +1,5 @@
 header {
-    height: 100vh;
+    height: 80vh;
     padding-top: 7rem;
     overflow: hidden;
 }
@@ -24,7 +24,7 @@ header {
 .development__process {
     background: linear-gradient(var(--color-primary), transparent);
     width: 60rem;
-    height: 40rem; /* originally 30 */
+    height: 35rem; /* originally 30 */
     margin-top: 4rem;
     border-radius: 6rem 6rem 0 0; /*top left, top right, bot left, bot right*/
     overflow: hidden;
@@ -36,7 +36,7 @@ header {
 /* SCROLL DOWN */
 .scroll__down__right, .scroll__down__left{
     position: absolute;
-    bottom: 5rem;
+    bottom: 1rem;
     transform: rotate(90deg);
     font-weight: 300;
     font-size: 0.9rem;

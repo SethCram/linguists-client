@@ -1,22 +1,22 @@
-.app__container{
+/* USER INPUT */
+.loading{
+    cursor: wait !important;
+}
+
+.userinput__container{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.app__container__databases {
+.userinput__databases {
     flex-direction: row;
     display: flex;
     align-items: center;
 }
 
-.app__container__question{
-    font-size: 30px;
-    width: 70vw;
-    margin: 50px;
-}
 
-.app__container__databases__upload__icon{
+.userinput__databases__upload__icon{
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -29,15 +29,66 @@
     cursor: pointer;
 }
 
-.app__container__databases__dropdown{
+input, textarea {
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background: transparent;
+    border: 2px solid var(--color-primary-variant);
+    resize: none;
+    color: var(--color-white);
+    font-size: 15px;
+}
+
+.userinput__databases__dropdown{
     background: none;
     margin: 50px 10px;
 }
 
-.app__container__submit{
-    margin: 100px;
+.userinput__submit{
+    margin-top: 50px;
 }
 
-.app__container__submit:disabled{
+.userinput__submit:disabled{
     cursor: not-allowed;
+}
+
+/* OUTPUT */
+.output__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.output__item{
+    background: var(--color-bg-variant);
+    padding: 1.3rem;
+    border-radius: 2rem;
+    border: 1px solid transparent;
+    transition: var(--transition);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.output__item:hover{
+    border-color: var(--color-primary-variant);
+    background: transparent;
+}
+
+.output__sql{
+    
+}
+
+.output__rslts{
+    
+}
+
+.output__item h3 {
+    margin: 1.2rem 0 2rem; /* 1rem == 16px (depedent on browser) */
+    color: var(--color-primary);
+}
+
+.output__rslt{
+    
 }
