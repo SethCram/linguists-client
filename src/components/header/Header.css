@@ -1,0 +1,75 @@
+header {
+    height: 100vh;
+    padding-top: 7rem;
+    overflow: hidden;
+}
+
+.header__container {
+    text-align: center;
+    height: 50%;
+    position: relative;
+}
+
+/* CTA (CALL TO ACTION BTNS) */
+
+/* flex to get some space tween */
+.cta {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+}
+
+/* PERSONAL IMAGE */
+.development__process {
+    background: linear-gradient(var(--color-primary), transparent);
+    width: 60rem;
+    height: 40rem; /* originally 30 */
+    margin-top: 4rem;
+    border-radius: 6rem 6rem 0 0; /*top left, top right, bot left, bot right*/
+    overflow: hidden;
+    padding: 5rem 1.5rem 1.5rem 1.5rem;
+    position: absolute;
+    left: calc(50% - 30rem);
+}
+
+/* SCROLL DOWN */
+.scroll__down__right, .scroll__down__left{
+    position: absolute;
+    bottom: 5rem;
+    transform: rotate(90deg);
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+.scroll__down__right {
+    right: -2.3rem;
+}
+
+.scroll__down__left {
+    left: -2.3rem;
+}
+
+/* MEDIA QUERIES (MEDIUM DEVICES)  */
+
+/* For tablets */
+@media screen and (max-width: 1024px) {
+    header {
+        height: 40vh;  /* height: 68vh; */ /* vh = viewport height*/
+    }
+
+    .development__process, .scroll__down__right, .scroll__down__left {
+        display: none;
+    }
+}
+
+/* For phones - don't display icons */
+@media screen and (max-width: 600px) {
+    header {
+        height: 50vh; /*100vh;*/
+    }
+
+   .scroll__down__right, .development__process, .scroll__down__left {
+        display: none;
+    }
+}
