@@ -40,9 +40,26 @@ input, textarea {
     font-size: 15px;
 }
 
+/* dropdown styling */
 .userinput__databases__dropdown{
-    background: none;
-    margin: 50px 10px;
+    margin: 50px 10px 50px 10px;
+}
+.userinput__dropdown__control{
+    background: none !important;
+    border: 2px solid var(--color-primary-variant) !important;
+}
+.userinput__dropdown__ph{
+    color: var(--color-light);
+}
+.userinput__dropdown__menu{
+    background: none !important;
+    border: 2px solid var(--color-primary-variant) !important;
+}
+.userinput__dropdown__menu > *{
+    color: var(--color-primary) !important;
+}
+.userinput__dropdown__menu > :hover{
+    color: var(--color-bg-variant) !important;
 }
 
 .userinput__submit{
@@ -79,7 +96,7 @@ input, textarea {
 }
 
 .output__sql{
-
+    
 }
 
 .output__rslts{
@@ -87,7 +104,7 @@ input, textarea {
 }
 
 .output__rslts__list__elly{
-    margin: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 .output__item h3 {

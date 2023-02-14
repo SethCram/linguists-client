@@ -131,11 +131,14 @@ function App() {
             />
             <Dropdown
               className='userinput__databases__dropdown'
+              controlClassName="userinput__dropdown__control"
+              placeholderClassName='userinput__dropdown__ph'
+              menuClassName='userinput__dropdown__menu'
               options={dbNames}
               onChange={(fileObj) => { setSelectedDbName(fileObj.value) }}
               value={selectedDbName}
               placeholder="Select a database to query..."
-              required //doesnt work in dropdown
+               //doesnt work in dropdown
             />
           </div>
           <textarea
