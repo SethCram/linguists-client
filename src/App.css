@@ -58,6 +58,7 @@ input, textarea {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
+    margin-bottom: 10rem;
 }
 
 .output__item{
@@ -69,6 +70,7 @@ input, textarea {
     align-items: center;
     justify-content: center;
     text-align: center;
+    height: fit-content;
 }
 
 .output__item:hover{
@@ -77,11 +79,15 @@ input, textarea {
 }
 
 .output__sql{
-    
+
 }
 
 .output__rslts{
     
+}
+
+.output__rslts__list__elly{
+    margin: 1.5rem;
 }
 
 .output__item h3 {
@@ -91,4 +97,22 @@ input, textarea {
 
 .output__rslt{
     
+}
+
+/* MEDIA QUERIES */
+
+/* For tablets */
+@media screen and (max-width: 1024px) {
+    .output__container {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+    }
+}
+
+/* For phones */
+@media screen and (max-width: 600px) {
+    .output__container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 }

@@ -109,7 +109,7 @@ function App() {
   };
 
   return (
-    <div id='app' className={(isFetching || isUploading) && 'loading'}>
+    <div id='app' className={(isFetching || isUploading) ? 'loading': undefined}>
       <Header/>
       <section id="userinput">
         <h5>Interact with the System</h5>
@@ -159,7 +159,7 @@ function App() {
         <h2>Results</h2>
 
         <div className='container output__container'>
-          {sql && 
+          {sql && //console.log(results) &&
             <div className='output__item output__sql'>
               <h3><b>Generated SQL</b></h3>
               <p>{sql}</p>
