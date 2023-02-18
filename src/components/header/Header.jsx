@@ -1,6 +1,6 @@
 import CallToAction from "./CallToAction";
 import "./Header.css"
-import ME from "../../assets/Linguists Project Conceptual View.png"
+import BLOCK_DIAGRAM from "../../assets/Linguists Project Conceptual View.png"
 
 export default function Header() {
   return (
@@ -11,8 +11,8 @@ export default function Header() {
         <h5 className="text-light">Seth Cram & Khoi Nhugen</h5>
         <CallToAction />
         
-        <div className='development__process'>
-          <img src={ME} alt="development__process" />
+        <div className='header__block__diagram'>
+          <img src={BLOCK_DIAGRAM} alt="header__block__diagram" />
         </div>
         
         <a href="#userinput" className='scroll__down__right'>Scroll Down</a>

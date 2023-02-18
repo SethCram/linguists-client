@@ -1,7 +1,6 @@
 header {
-    height: 80vh;
+    height: 110vh;
     padding-top: 7rem;
-    overflow: hidden;
 }
 
 .header__container {
@@ -21,13 +20,12 @@ header {
 }
 
 /* PERSONAL IMAGE */
-.development__process {
+.header__block__diagram {
     background: linear-gradient(var(--color-primary), transparent);
     width: 60rem;
     height: 35rem; /* originally 30 */
     margin-top: 4rem;
     border-radius: 6rem 6rem 0 0; /*top left, top right, bot left, bot right*/
-    overflow: hidden;
     padding: 5rem 1.5rem 1.5rem 1.5rem;
     position: absolute;
     left: calc(50% - 30rem);
@@ -58,7 +56,7 @@ header {
         height: 40vh;  /* height: 68vh; */ /* vh = viewport height*/
     }
 
-    .development__process, .scroll__down__right, .scroll__down__left {
+    .header__block__diagram, .scroll__down__right, .scroll__down__left {
         display: none;
     }
 }
@@ -69,7 +67,7 @@ header {
         height: 50vh; /*100vh;*/
     }
 
-   .scroll__down__right, .development__process, .scroll__down__left {
+   .scroll__down__right, .header__block__diagram, .scroll__down__left {
         display: none;
     }
 }
