@@ -7,3 +7,4 @@
 3. ensure npm, the Javascript package manager, was installed alongside Node
 4. run "npm install" in the root folder to install the project dependencies
 5. head over to the backend at https://github.com/SethCram/Linguists-NLP-to-SQL/blob/main/README.md#setup and follow the setup steps
+6. run "npm start" in the root folder to get the frontend up and running
