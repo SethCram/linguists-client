@@ -95,25 +95,26 @@ input, textarea {
     background: transparent;
 }
 
-.output__sql{
-    
+.output__rslts__list__ellys__container{
+    background: var(--color-primary);
+    border-radius: 2rem;
+    transition: var(--transition);
+    border: 0.2px solid transparent;
+    margin: 1rem;
 }
 
-.output__rslts{
-    
+.output__rslts__list__ellys__container:hover{
+    border-color: var(--color-bg-variant);
+    background: transparent;
 }
 
 .output__rslts__list__elly{
-    margin-top: 1.5rem;
+    margin: 0.5rem;
 }
 
 .output__item h3 {
     margin: 1.2rem 0 2rem; /* 1rem == 16px (depedent on browser) */
     color: var(--color-primary);
-}
-
-.output__rslt{
-    
 }
 
 /* MEDIA QUERIES */

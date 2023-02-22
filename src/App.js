@@ -14,7 +14,8 @@ function App() {
   const [selectedDbName, setSelectedDbName] = useState(null);
   const [dbFile, setDbFile] = useState(null);
   const [sql, setSql] = useState("");
-  const [results, setResults] = useState([]); //can't use empty list to init here for conditional txt display
+  const [results, setResults] = useState([]); 
+  const [resultsDimensionality, setResultsDimensionality] = useState(0);
   const [isFetching, setIsFetching] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [question, setQuestion] = useState("");
@@ -35,6 +36,15 @@ function App() {
     fetchDbs();
 
   }, []);
+
+  const findArrDimensions = (arr) => {
+    const dimensions = [
+      arr.length,
+      arr.reduce((x, y) => Math.max(x, y.length), 0)
+    ];  
+
+    return dimensions;
+  }
 
   useEffect(() => {
 
@@ -72,6 +82,15 @@ function App() {
       setAskedQuestion(question);
       setSql(response.data[0].query); //not sure why returns arr of results
       setResults(response.data[0].execution_results);
+      //console.table(response.data[0].execution_results);
+
+      //set dimensionality
+      const dimensions = findArrDimensions(response.data[0].execution_results);
+      //console.log(dimensions);
+      setResultsDimensionality(dimensions);
+      
+      //redirect user to output section where results appeared
+      window.location.href = "#output"
     }
     catch (error) {
       console.log(error);
@@ -168,13 +187,24 @@ function App() {
               <p>{sql}</p>
             </div>
           }
-          {Array.isArray(results) && results.length !== 0 && //only display if results available
+          {results.length !== 0 && //only display if results available
             <div className='output__item output__rslts'>
               <h3><b>Information from {queriedDb} Database</b></h3>
               <ul className='output__rslts__list'>
-                {results.map((rslt, i) => (
-                  <li className='output__rslts__list__elly' key={i}>{rslt}</li>
-                ))}
+                {resultsDimensionality && (resultsDimensionality[1] === 1 ? //if 2nd dimesion is singular, display normally
+                  (results.map((rslt, i) => (
+                    <li className='output__rslts__list__elly' key={i}>{rslt}</li>
+                  ))) : //if 2nd dimension greater than 1, display each dimension in its own row
+                  (results.map((rsltArry, i) => {
+                    return(
+                      <div className='output__rslts__list__ellys__container' key={i}>
+                        {rsltArry.map((rslt, j) => (
+                          <li className='output__rslts__list__elly' key={j}>{rslt}</li>
+                        ))}
+                      </div>
+                    )
+                  }))
+                )}
               </ul>
             </div>
           }
