@@ -112,14 +112,26 @@ function App() {
       formData.append("name", fileName);
       formData.append("file", file);
 
-      const response = await axios.post("/upload/", formData);
-      
-      console.log(response.data);
+      let response = null;
 
-      setSelectedDbName(fileName.split('.')[0]);
+      //try to upload db file
+      try {
+        response = await axios.post("/upload/", formData);
+      //if couldn't upload db file, try to load 
+      } catch (error) {
+        //console.log(error);
+        response = await axios.post("/upload/sql", formData);
+      }
+
+      const dbName = fileName.split('.')[0]
+
+      //update selected and possible db names
+      setDbNames([...dbNames, dbName]);
+      setSelectedDbName(dbName);
     }
     catch (error) {
       console.log(error);
+      //throw error on frontend
     }
     finally {
       setIsUploading(false);
