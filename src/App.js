@@ -21,6 +21,8 @@ function App() {
   const [question, setQuestion] = useState("");
   const [askedQuestion, setAskedQuestion] = useState("");
   const [queriedDb, setQueriedDb] = useState(null);
+  const [askErrorMsg, setAskErrorMsg] = useState("");
+  const [uploadErrorMsg, setUploadErrorMsg] = useState("");
 
   useEffect(() => { //cant detch data in here since using sync funct
     
@@ -70,6 +72,8 @@ function App() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    setAskErrorMsg("");
+
     setIsFetching(true);
 
     try {
@@ -93,7 +97,8 @@ function App() {
       window.location.href = "#output"
     }
     catch (error) {
-      console.log(error);
+      setAskErrorMsg("Something went wrong. Please ensure your questions is possible given the selected database.");
+      console.log(error.response.data);
     }
     finally {
       setIsFetching(false);
@@ -103,6 +108,7 @@ function App() {
   const handleFileUpload = async (file) => {
 
     setIsUploading(true);
+    setUploadErrorMsg("");
 
     try {
 
@@ -112,15 +118,13 @@ function App() {
       formData.append("name", fileName);
       formData.append("file", file);
 
-      let response = null;
-
       //try to upload db file
       try {
-        response = await axios.post("/upload/", formData);
+        await axios.post("/upload/", formData);
       //if couldn't upload db file, try to load 
       } catch (error) {
         //console.log(error);
-        response = await axios.post("/upload/sql", formData);
+        await axios.post("/upload/sql", formData);
       }
 
       const dbName = fileName.split('.')[0]
@@ -130,8 +134,9 @@ function App() {
       setSelectedDbName(dbName);
     }
     catch (error) {
-      console.log(error);
-      //throw error on frontend
+      setUploadErrorMsg("Something went wrong with the file upload. Ensure an SQLite3 compatible SQL or database file is being uploaded.")
+      //console.log(error.response.data.detail);
+      //setUploadErrorMsg(error.response.data.detail);
     }
     finally {
       setIsUploading(false);
@@ -175,7 +180,10 @@ function App() {
           className='container userinput__container'
           onSubmit={handleSubmit}
         >
-          <div className='userinput__databases'>
+          {uploadErrorMsg &&
+            <p className='userinput__error'>{uploadErrorMsg}</p>
+          }
+          <span className='userinput__databases'>
             <label htmlFor="userinput__databases__file__input">
               <i className="bordered__icon userinput__databases__upload__icon fa-solid fa-plus"></i>
             </label>
@@ -209,7 +217,7 @@ function App() {
                 />
               </>
             }
-          </div>
+          </span>
           <textarea
             name='message'
             rows='7'
@@ -223,6 +231,9 @@ function App() {
           >
             Search
           </button>
+          {askErrorMsg &&
+            <p className='userinput__error'>{askErrorMsg}</p>
+          }
         </form>
       </section>
 
