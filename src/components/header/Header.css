@@ -38,6 +38,11 @@ header {
     transform: rotate(90deg);
     font-weight: 300;
     font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.726);
+}
+
+.scroll__down__right:hover, .scroll__down__left:hover{
+    color: rgba(0, 0, 0, 0.301);
 }
 
 .scroll__down__right {

@@ -139,6 +139,31 @@ function App() {
     
   };
 
+  const rmFromArr = (target, arr) => {
+    return arr.filter((element) => element !== target )
+  }
+
+  const handleFileDelete = async () => {
+    //should set isDeleting?
+
+    //delete select db name
+    const fileName = selectedDbName;
+
+    try {
+      await axios.delete("/deleteSqlDb", {
+        params: {
+          file_name: fileName
+        }
+      });
+
+      //rmeove deleted db name and unselect it
+      setDbNames(rmFromArr(fileName, dbNames));
+      setSelectedDbName(null);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div id='app' className={(isFetching || isUploading) ? 'loading': undefined}>
       <Header/>
@@ -152,7 +177,7 @@ function App() {
         >
           <div className='userinput__databases'>
             <label htmlFor="userinput__databases__file__input">
-              <i className="userinput__databases__upload__icon fa-solid fa-plus"></i>
+              <i className="bordered__icon userinput__databases__upload__icon fa-solid fa-plus"></i>
             </label>
             <input
                 type="file"
@@ -171,6 +196,19 @@ function App() {
               placeholder="Select a database to query..."
                //doesnt work in dropdown
             />
+            {selectedDbName && 
+              <>
+                <label htmlFor="userinput__databases__file__delete">
+                  <i className="bordered__icon userinput__databases__delete__icon fa-regular fa-trash-can"></i>
+                </label>
+                <input
+                  type="button"
+                  id="userinput__databases__file__delete"
+                  style={{ display: "none" }} 
+                  onClick={handleFileDelete}
+                />
+              </>
+            }
           </div>
           <textarea
             name='message'
