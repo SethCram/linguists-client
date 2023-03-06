@@ -1,0 +1,66 @@
+.userinput__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userinput__databases {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+
+.userinput__error{
+    text-align: center;
+    margin: 1rem;
+}
+
+.bordered__icon{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-light);
+    cursor: pointer;
+}
+
+.userinput__databases__upload__icon{
+    font-size: 20px;
+}
+
+/* dropdown styling */
+.userinput__databases__dropdown{
+    margin: 50px 10px 50px 10px;
+}
+.userinput__dropdown__control{
+    background: none !important;
+    border: 2px solid var(--color-primary-variant) !important;
+}
+.userinput__dropdown__ph{
+    color: var(--color-light);
+}
+.userinput__dropdown__menu{
+    background: none !important;
+    border: 2px solid var(--color-primary-variant) !important;
+}
+.userinput__dropdown__menu > *{
+    color: var(--color-primary) !important;
+}
+.userinput__dropdown__menu > :hover{
+    color: var(--color-bg-variant) !important;
+}
+
+.userinput__databases__delete__icon{
+    font-size: 15px;
+}
+
+.userinput__submit{
+    margin-top: 50px;
+}
+
+.userinput__submit:disabled{
+    cursor: not-allowed;
+}
