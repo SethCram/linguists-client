@@ -63,21 +63,14 @@ export default function UserInput({ setAskedQuestion, setSql, setQueriedDb, setR
         question: question
       });
 
-      console.log(response);
-
-      console.log(selectedDbName);
       setQueriedDb(selectedDbName);
-      console.log(question);
       setAskedQuestion(question);
-      console.log(response.data[0].query);
       setSql(response.data[0].query); //not sure why returns arr of results
-      console.log(response.data[0].execution_results)
       setResults(response.data[0].execution_results);
       //console.table(response.data[0].execution_results);
       
       //redirect user to output section where results appeared
       window.location.href = "#output"
-      console.log(response)
     }
     catch (error) {
       setAskErrorMsg("Something went wrong. Please ensure your questions is possible given the selected database.");
@@ -213,6 +206,10 @@ export default function UserInput({ setAskedQuestion, setSql, setQueriedDb, setR
           >
             Search
           </button>
+          
+          {(isFetching || isUploading) &&
+            <div className="spin" > </div>
+          }
           {askErrorMsg &&
             <p className='userinput__error'>{askErrorMsg}</p>
           }
