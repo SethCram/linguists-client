@@ -7,7 +7,7 @@ import 'react-dropdown/style.css';
 export default function UserInput({ setAskedQuestion, setSql, setQueriedDb, setResults }) {
   const [dbNames, setDbNames] = useState(null);
   const [selectedDbName, setSelectedDbName] = useState(null);
-  const [dbFile, setDbFile] = useState(null);
+  //const [dbFile, setDbFile] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [question, setQuestion] = useState("");
@@ -20,7 +20,14 @@ export default function UserInput({ setAskedQuestion, setSql, setQueriedDb, setR
       try {
         const response = await axios.get("getDatabases/");
 
-        setDbNames(response.data);
+        let names = response.data;
+
+        if (names) {
+          //sort in alphabetic order
+          names.sort();
+        }
+
+        setDbNames(names);
       } catch (error) {
         console.log(error);
       }
@@ -29,6 +36,7 @@ export default function UserInput({ setAskedQuestion, setSql, setQueriedDb, setR
 
   }, []);
 
+  /*
   useEffect(() => {
 
     const getDbFile = async () => {
@@ -49,6 +57,7 @@ export default function UserInput({ setAskedQuestion, setSql, setQueriedDb, setR
     getDbFile();
 
   }, [selectedDbName]);
+  */
 
   const handleSubmit = async (event) => {
     event.preventDefault();
