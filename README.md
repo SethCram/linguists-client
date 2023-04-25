@@ -12,9 +12,14 @@
 ## Deployment Instructions (on Ubuntu Linux)
 1. clone the repository `git clone https://github.com/SethCram/linguists-client.git`
 2. install Node.js and npm 
+  1. on Ubuntu-based distributions
   ```sh
   $ sudo apt install nodejs
   $ sudo apt install npm
+  ```
+  2. on RHEL-based distributions
+  ```sh
+  $ sudo yum install nodejs
   ```
 3. install the project dependencies
   ```sh
