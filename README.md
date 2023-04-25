@@ -17,6 +17,6 @@ $ sudo apt install nodejs
 $ sudo apt install npm
 ```
 3. install the project dependencies `npm install` (need to be in the root of the repo)
-4. launch the website `npm start` (need to be in the root of the repo)
+4. create a production build and launch the website `npm run build` (need to be in the root of the repo)
 5. navigate to http://localhost:3000/ if the website didn't already launch
 6. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
