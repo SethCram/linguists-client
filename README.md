@@ -30,6 +30,23 @@
     $ npm install
     ```
 5. create a production build `npm run build` (need to be in the root of the repo)
-6. setup nginx as a reverse proxy service `sudo service nginx start`
-8. navigate to http://localhost:3000/ if the website didn't already launch
+6. redirect the server traffic to the web application: 
+    `$ sudo vi /etc/nginx/nginx.conf`
+    add this inside the server block:
+        ```
+        location / {
+                proxy_pass http://localhost:3000;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+            }
+        ```
+    ```sh
+    $ sudo service nginx start
+    ```
+    1. If SELinux is being used, tell it to allow httpd traffic: `sudo setsebool -P httpd_can_network_connect 1`
+        
+8. navigate to the public IP address and the frontend should be visible 
 9. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
