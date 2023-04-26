@@ -52,7 +52,8 @@
     $ sudo nginx -t
     $ sudo service nginx start
     ```
-    1. If SELinux is being used, tell it to allow httpd traffic: `sudo setsebool -P httpd_can_network_connect 1`
+    1. if SELinux is being used, tell it to allow httpd traffic: `sudo setsebool -P httpd_can_network_connect 1`
         
 6. navigate to the public IP address and the frontend should be visible 
 7. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
+    1. if it breaks, head over to the [backend deployment instructions](https://github.com/SethCram/Linguists-NLP-to-SQL#deployment-instructions)
