@@ -29,12 +29,15 @@
     $ cd linguists-client
     $ npm install
     ```
-5. create a production build `npm run build` (need to be in the root of the repo)
-6. redirect the server traffic to the web application: 
+5. run the web app indefinitely
+    ```sh
+    $ pm2 start --name linguists-client-dashboard npm -- start
+    ```
+7. redirect the server traffic to the web application: 
     ```sh
     $ sudo vi /etc/nginx/nginx.conf
     ```
-    add this inside the server block:
+    add this inside the "server" block:
     ```
     location / {
             proxy_pass http://localhost:3000;
@@ -45,10 +48,12 @@
             proxy_cache_bypass $http_upgrade;
         }
     ```
+    verify the syntax of the config file is okay and start nginx using it
     ```sh
+    $ sudo nginx -t
     $ sudo service nginx start
     ```
     1. If SELinux is being used, tell it to allow httpd traffic: `sudo setsebool -P httpd_can_network_connect 1`
         
-8. navigate to the public IP address and the frontend should be visible 
-9. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
+7. navigate to the public IP address and the frontend should be visible 
+8. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
