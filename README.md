@@ -11,21 +11,25 @@
 
 ## Deployment Instructions (on Ubuntu Linux)
 1. clone the repository `git clone https://github.com/SethCram/linguists-client.git`
-2. install Node.js and npm 
+2. install Node.js, npm, nginx, and pm2
     1. on Ubuntu-based distributions
         ```sh
         $ sudo apt install nodejs
-        $ sudo apt install npm
+        $ sudo apt install npm 
+        $ sudo apt install nginx
+        $ sudo npm i -g pm2 
         ```
     2. on RHEL-based distributions
         ```sh
-        $ sudo yum install nodejs
+        $ sudo yum install nodejs nginx
+        $ sudo npm i -g pm2 
         ```
 3. install the project dependencies
     ```sh
     $ cd linguists-client
     $ npm install
     ```
-5. create a production build and launch the website `npm run build` (need to be in the root of the repo)
-6. navigate to http://localhost:3000/ if the website didn't already launch
-7. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
+5. create a production build `npm run build` (need to be in the root of the repo)
+6. setup nginx as a reverse proxy service `sudo service nginx start`
+8. navigate to http://localhost:3000/ if the website didn't already launch
+9. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
