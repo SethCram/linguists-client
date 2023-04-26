@@ -10,8 +10,18 @@
 6. run "npm start" in the root folder to get the frontend up and running
 
 ## Deployment Instructions (on Ubuntu Linux)
-1. clone the repository `git clone https://github.com/SethCram/linguists-client.git`
-2. allow http traffic through port 80
+1. install server & setup software Node.js, npm, nginx, and git
+    1. on Ubuntu-based distributions
+        ```sh
+        $ sudo apt install nodejs git
+        $ sudo apt install npm nginx
+        ```
+    2. on RHEL-based distributions
+        ```sh
+        $ sudo yum install nodejs nginx git
+        ```
+2. clone the repository `git clone https://github.com/SethCram/linguists-client.git`
+3. allow http traffic through port 80
     1. on firewalld 
         ```sh
         $ sudo sh -c "firewall-cmd --permanent --zone=public --add-service=http && firewall-cmd --reload"
@@ -19,16 +29,6 @@
     2. on iptables
         ```sh
         $ sudo sh -c "iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT && service iptables save"
-        ```
-3. install server & setup software Node.js, npm, and nginx
-    1. on Ubuntu-based distributions
-        ```sh
-        $ sudo apt install nodejs
-        $ sudo apt install npm nginx
-        ```
-    2. on RHEL-based distributions
-        ```sh
-        $ sudo yum install nodejs nginx
         ```
 4. install pm2 globally for process management and the project dependencies 
     ```sh
