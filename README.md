@@ -14,13 +14,13 @@
 2. allow http traffic through port 80
     1. on firewalld 
         ```sh
-        $ sudo sh -c "firewall-cmd --permanent --zone=public --add-service=http && firewall-cmd --reload
+        $ sudo sh -c "firewall-cmd --permanent --zone=public --add-service=http && firewall-cmd --reload"
         ```
     2. on iptables
         ```sh
-        sudo iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT && service iptables save
+        sudo sh -c "iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT && service iptables save"
         ```
-2. install server & setup software Node.js, npm, and nginx
+3. install server & setup software Node.js, npm, and nginx
     1. on Ubuntu-based distributions
         ```sh
         $ sudo apt install nodejs
@@ -30,18 +30,18 @@
         ```sh
         $ sudo yum install nodejs nginx
         ```
-3. install pm2 globally for process management and the project dependencies 
+4. install pm2 globally for process management and the project dependencies 
     ```sh
     $ sudo npm i -g pm2
     $ cd linguists-client
     $ npm install
     ```
-4. run the web app indefinitely and verify
+5. run the web app indefinitely and verify
     ```sh
     $ pm2 start --name linguists-client-dashboard npm -- start
     $ pm2 logs 
     ```
-5. redirect the server traffic to the web application
+6. redirect the server traffic to the web application
     ```sh
     $ sudo vi /etc/nginx/nginx.conf
     ```
@@ -63,6 +63,6 @@
     ```
     1. if SELinux is being used, tell it to allow httpd traffic: `sudo setsebool -P httpd_can_network_connect 1`
         
-6. navigate to the public IP address using http (e.g. http://[publicIPAddress]) and the frontend should be visible 
-7. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
+7. navigate to the public IP address using http (e.g. http://[publicIPAddress]) and the frontend should be visible 
+8. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
     1. if it breaks, head over to the [backend deployment instructions](https://github.com/SethCram/Linguists-NLP-to-SQL#deployment-instructions)
