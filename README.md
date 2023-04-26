@@ -31,18 +31,20 @@
     ```
 5. create a production build `npm run build` (need to be in the root of the repo)
 6. redirect the server traffic to the web application: 
-    `$ sudo vi /etc/nginx/nginx.conf`
+    ```sh
+    $ sudo vi /etc/nginx/nginx.conf
+    ```
     add this inside the server block:
-        ```
-        location / {
-                proxy_pass http://localhost:3000;
-                proxy_http_version 1.1;
-                proxy_set_header Upgrade $http_upgrade;
-                proxy_set_header Connection 'upgrade';
-                proxy_set_header Host $host;
-                proxy_cache_bypass $http_upgrade;
-            }
-        ```
+    ```
+    location / {
+            proxy_pass http://localhost:3000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
+    ```
     ```sh
     $ sudo service nginx start
     ```
