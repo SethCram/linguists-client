@@ -11,21 +11,19 @@
 
 ## Deployment Instructions (on Ubuntu Linux)
 1. clone the repository `git clone https://github.com/SethCram/linguists-client.git`
-2. install Node.js, npm, nginx, and pm2
+2. install server & setup software Node.js, npm, and nginx
     1. on Ubuntu-based distributions
         ```sh
         $ sudo apt install nodejs
-        $ sudo apt install npm 
-        $ sudo apt install nginx
-        $ sudo npm i -g pm2 
+        $ sudo apt install npm nginx
         ```
     2. on RHEL-based distributions
         ```sh
         $ sudo yum install nodejs nginx
-        $ sudo npm i -g pm2 
         ```
-3. install the project dependencies
+3. install pm2 globally for process management and the project dependencies 
     ```sh
+    $ sudo npm i -g pm2
     $ cd linguists-client
     $ npm install
     ```
