@@ -29,11 +29,12 @@
     $ cd linguists-client
     $ npm install
     ```
-5. run the web app indefinitely
+4. run the web app indefinitely and verify
     ```sh
     $ pm2 start --name linguists-client-dashboard npm -- start
+    $ pm2 logs 
     ```
-7. redirect the server traffic to the web application: 
+5. redirect the server traffic to the web application
     ```sh
     $ sudo vi /etc/nginx/nginx.conf
     ```
@@ -55,5 +56,5 @@
     ```
     1. If SELinux is being used, tell it to allow httpd traffic: `sudo setsebool -P httpd_can_network_connect 1`
         
-7. navigate to the public IP address and the frontend should be visible 
-8. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
+6. navigate to the public IP address and the frontend should be visible 
+7. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
