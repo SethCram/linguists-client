@@ -50,7 +50,7 @@
     verify the syntax of the config file is okay and start nginx using it
     ```sh
     $ sudo nginx -t
-    $ sudo service nginx start
+    $ sudo service nginx restart
     ```
     1. if SELinux is being used, tell it to allow httpd traffic: `sudo setsebool -P httpd_can_network_connect 1`
         
