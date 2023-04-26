@@ -18,7 +18,7 @@
         ```
     2. on iptables
         ```sh
-        sudo sh -c "iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT && service iptables save"
+        $ sudo sh -c "iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT && service iptables save"
         ```
 3. install server & setup software Node.js, npm, and nginx
     1. on Ubuntu-based distributions
