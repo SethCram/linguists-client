@@ -11,6 +11,15 @@
 
 ## Deployment Instructions (on Ubuntu Linux)
 1. clone the repository `git clone https://github.com/SethCram/linguists-client.git`
+2. allow http traffic through port 80
+    1. on firewalld 
+        ```sh
+        $ sudo sh -c "firewall-cmd --permanent --zone=public --add-service=http && firewall-cmd --reload
+        ```
+    2. on iptables
+        ```sh
+        sudo iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT && service iptables save
+        ```
 2. install server & setup software Node.js, npm, and nginx
     1. on Ubuntu-based distributions
         ```sh
