@@ -14,26 +14,26 @@
 2. install setup software Node.js and npm
     1. on Ubuntu-based distributions
         ```sh
-        sudo apt install nodejs
-        sudo apt install npm
+        sudo apt install -y nodejs
+        sudo apt install -y npm
         ```
     2. on RHEL-based distributions
         ```sh
-        sudo yum install nodejs
+        sudo yum install -y nodejs
         ```
-2. clone the repository `git clone https://github.com/SethCram/linguists-client.git`
-3. install pm2 globally for process management and the project dependencies 
+3. clone the repository `git clone https://github.com/SethCram/linguists-client.git`
+4. install pm2 globally for process management and the project dependencies 
     ```sh
-    sudo npm i -g pm2
+    sudo npm i -gy pm2
     cd linguists-client
     npm install
     ```
-4. run the web app indefinitely and verify
+5. run the web app indefinitely and verify
     ```sh
     pm2 start --name linguists-client-dashboard npm -- start
     pm2 logs 
     ```
-5. redirect the server traffic to the web application
+6. redirect the server traffic to the web application
     ```sh
    sudo vi /etc/nginx/nginx.conf
     ```
@@ -55,5 +55,5 @@
     ```
     1. if SELinux is being used, tell it to allow httpd traffic: `sudo setsebool -P httpd_can_network_connect 1`
         
-6. navigate to the public IP address using http (e.g. http://[publicIPAddress]) and the frontend should be visible or use curl to verify `curl http://[publicIPAddress]` 
-7. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
+7. navigate to the public IP address using http (e.g. http://[publicIPAddress]) and the frontend should be visible or use curl to verify `curl http://[publicIPAddress]` 
+8. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
