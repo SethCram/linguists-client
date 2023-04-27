@@ -55,6 +55,5 @@
     ```
     1. if SELinux is being used, tell it to allow httpd traffic: `sudo setsebool -P httpd_can_network_connect 1`
         
-6. navigate to the public IP address using http (e.g. http://[publicIPAddress]) and the frontend should be visible 
+6. navigate to the public IP address using http (e.g. http://[publicIPAddress]) and the frontend should be visible or use curl to verify `curl http://[publicIPAddress]` 
 7. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
-    1. if it breaks, head over to the [backend deployment instructions](https://github.com/SethCram/Linguists-NLP-to-SQL#deployment-instructions)
