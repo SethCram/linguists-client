@@ -9,41 +9,33 @@
 5. head over to the backend at https://github.com/SethCram/Linguists-NLP-to-SQL/blob/main/README.md#setup and follow the setup steps
 6. run "npm start" in the root folder to get the frontend up and running
 
-## Deployment Instructions (on Ubuntu Linux)
-1. install server & setup software Node.js, npm, nginx, and git
+## Deployment Instructions (on Linux)
+1. first, setup the backend: [backend deployment instructions](https://github.com/SethCram/Linguists-NLP-to-SQL#deployment-instructions)
+2. install setup software Node.js and npm
     1. on Ubuntu-based distributions
         ```sh
-        $ sudo apt install nodejs git
-        $ sudo apt install npm nginx
+        sudo apt install nodejs
+        sudo apt install npm
         ```
     2. on RHEL-based distributions
         ```sh
-        $ sudo yum install nodejs nginx git
+        sudo yum install nodejs
         ```
 2. clone the repository `git clone https://github.com/SethCram/linguists-client.git`
-3. allow http traffic through port 80
-    1. on firewalld 
-        ```sh
-        $ sudo sh -c "firewall-cmd --permanent --zone=public --add-service=http && firewall-cmd --reload"
-        ```
-    2. on iptables
-        ```sh
-        $ sudo sh -c "iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT && service iptables save"
-        ```
-4. install pm2 globally for process management and the project dependencies 
+3. install pm2 globally for process management and the project dependencies 
     ```sh
-    $ sudo npm i -g pm2
-    $ cd linguists-client
-    $ npm install
+    sudo npm i -g pm2
+    cd linguists-client
+    npm install
     ```
-5. run the web app indefinitely and verify
+4. run the web app indefinitely and verify
     ```sh
-    $ pm2 start --name linguists-client-dashboard npm -- start
-    $ pm2 logs 
+    pm2 start --name linguists-client-dashboard npm -- start
+    pm2 logs 
     ```
-6. redirect the server traffic to the web application
+5. redirect the server traffic to the web application
     ```sh
-    $ sudo vi /etc/nginx/nginx.conf
+   sudo vi /etc/nginx/nginx.conf
     ```
     add this inside the "server" block:
     ```
@@ -58,11 +50,11 @@
     ```
     verify the syntax of the config file is okay and start nginx using it
     ```sh
-    $ sudo nginx -t
-    $ sudo service nginx restart
+    sudo nginx -t
+    sudo service nginx restart
     ```
     1. if SELinux is being used, tell it to allow httpd traffic: `sudo setsebool -P httpd_can_network_connect 1`
         
-7. navigate to the public IP address using http (e.g. http://[publicIPAddress]) and the frontend should be visible 
-8. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
+6. navigate to the public IP address using http (e.g. http://[publicIPAddress]) and the frontend should be visible 
+7. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
     1. if it breaks, head over to the [backend deployment instructions](https://github.com/SethCram/Linguists-NLP-to-SQL#deployment-instructions)
