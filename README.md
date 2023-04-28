@@ -28,12 +28,22 @@
     cd linguists-client
     npm install
     ```
-5. run the web app indefinitely and verify
+5. try running the frontend `sudo npm start`
+   1. if an issue is encountered, try installing kvm and updating to the right node.js version:
+        ```sh
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+        command -v nvm
+        ```
+        If "command -v nvm" doesn't output "nvm", logout and relogin, and then:
+        ```sh
+        kvm install 16.17.1
+        ```
+6. run the web app indefinitely and verify
     ```sh
     pm2 start --name linguists-client-dashboard npm -- start
     pm2 logs 
     ```
-6. redirect the server traffic to the web application
+7. redirect the server traffic to the web application
     ```sh
    sudo vi /etc/nginx/nginx.conf
     ```
@@ -53,7 +63,6 @@
     sudo nginx -t
     sudo service nginx restart
     ```
-    1. if SELinux is being used, tell it to allow httpd traffic: `sudo setsebool -P httpd_can_network_connect 1`
         
-7. navigate to the public IP address using http (e.g. http://[publicIPAddress]) and the frontend should be visible or use curl to verify `curl http://[publicIPAddress]` 
-8. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
+8. navigate to the public IP address using http (e.g. http://[publicIPAddress]) and the frontend should be visible or use curl to verify `curl http://[publicIPAddress]` 
+9. verify that it's connected to the backend at port 8000 by clicking on the dropdown and seeing if it breaks
