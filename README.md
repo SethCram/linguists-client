@@ -29,14 +29,14 @@
     npm install
     ```
 5. try running the frontend `sudo npm start`
-   1. if an issue is encountered, try installing kvm and updating to the right node.js version:
+   1. if an issue is encountered, try installing nvm and updating to the right node.js version:
         ```sh
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
         command -v nvm
         ```
         If "command -v nvm" doesn't output "nvm", logout and relogin, and then:
         ```sh
-        kvm install 16.17.1
+        nvm install 16.17.1
         ```
 6. run the web app indefinitely and verify
     ```sh
