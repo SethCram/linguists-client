@@ -1,5 +1,4 @@
 import './App.css';
-import axios from 'axios';
 import { useState } from 'react';
 import 'react-dropdown/style.css';
 import Header from './components/header/Header';
