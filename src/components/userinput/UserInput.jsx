@@ -29,7 +29,7 @@ export default function UserInput({ setAskedQuestion, setSql, setQueriedDb, setR
 
         setDbNames(names);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
     }
     fetchDbs();
@@ -84,7 +84,7 @@ export default function UserInput({ setAskedQuestion, setSql, setQueriedDb, setR
     catch (error) {
       setAskErrorMsg("Something went wrong. Please ensure your questions is possible given the selected database.");
       //console.log(error.response.data);
-      console.log(error);
+      //console.log(error);
     }
     finally {
       setIsFetching(false);
@@ -151,7 +151,7 @@ export default function UserInput({ setAskedQuestion, setSql, setQueriedDb, setR
       setDbNames(rmFromArr(fileName, dbNames));
       setSelectedDbName(null);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
