@@ -6,9 +6,6 @@ import Header from './components/header/Header';
 import UserInput from './components/userinput/UserInput';
 import Output from './components/output/Output';
 
-//for some reson, not enough to set proxy in package.json
-axios.defaults.baseURL = "http://localhost:8000/";
-
 function App() {
   const [results, setResults] = useState([]); 
   const [askedQuestion, setAskedQuestion] = useState("");
