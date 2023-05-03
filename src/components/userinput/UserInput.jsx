@@ -18,7 +18,7 @@ export default function UserInput({ setAskedQuestion, setSql, setQueriedDb, setR
     
     const fetchDbs = async () => {
       try {
-        const response = await axios.get("getDatabases/");
+        const response = await axios.get("/api/getDatabases/");
 
         let names = response.data;
 
@@ -67,7 +67,7 @@ export default function UserInput({ setAskedQuestion, setSql, setQueriedDb, setR
     setIsFetching(true);
 
     try {
-      const response = await axios.get(`/ask/${selectedDbName}/${question}`, {
+      const response = await axios.get(`/api/ask/${selectedDbName}/${question}`, {
         db_id: selectedDbName,
         question: question
       });
@@ -106,11 +106,11 @@ export default function UserInput({ setAskedQuestion, setSql, setQueriedDb, setR
 
       //try to upload db file
       try {
-        await axios.post("/upload/", formData);
+        await axios.post("/api/upload/", formData);
       //if couldn't upload db file, try to load 
       } catch (error) {
         //console.log(error);
-        await axios.post("/upload/sql", formData);
+        await axios.post("/api/upload/sql", formData);
       }
 
       const dbName = fileName.split('.')[0]
@@ -141,7 +141,7 @@ export default function UserInput({ setAskedQuestion, setSql, setQueriedDb, setR
     const fileName = selectedDbName;
 
     try {
-      await axios.delete("/deleteSqlDb", {
+      await axios.delete("/api/deleteSqlDb", {
         params: {
           file_name: fileName
         }
