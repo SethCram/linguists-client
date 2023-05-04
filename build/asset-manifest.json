@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.43b4928c.css",
-    "main.js": "/static/js/main.90872c10.js",
+    "main.js": "/static/js/main.97a8596a.js",
     "static/js/787.8e3f2344.chunk.js": "/static/js/787.8e3f2344.chunk.js",
     "static/media/Linguists Project Conceptual View.png": "/static/media/Linguists Project Conceptual View.61767cef274c22f4bbeb.png",
     "index.html": "/index.html",
     "main.43b4928c.css.map": "/static/css/main.43b4928c.css.map",
-    "main.90872c10.js.map": "/static/js/main.90872c10.js.map",
+    "main.97a8596a.js.map": "/static/js/main.97a8596a.js.map",
     "787.8e3f2344.chunk.js.map": "/static/js/787.8e3f2344.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.43b4928c.css",
-    "static/js/main.90872c10.js"
+    "static/js/main.97a8596a.js"
   ]
 }
