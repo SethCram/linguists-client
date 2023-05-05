@@ -4,7 +4,8 @@
 ## Developer Setup
 1. clone the repo `git clone https://github.com/SethCram/linguists-client.git`
 2. install the JavaScript runtime environment Node.js v16 and npm, the Javascript package manager
-    1. on Ubuntu-based distributions
+    1. on Windows, download Node.js off their website which comes with npm pre-installed
+    2. on Ubuntu-based distributions
         ```sh
         sudo apt install -y nodejs
         sudo apt install -y npm
