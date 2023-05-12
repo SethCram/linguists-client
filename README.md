@@ -1,4 +1,7 @@
 # linguists-client
+
+[Read the paper](https://drive.google.com/file/d/1dWXQ8Ih7NHlS9qyRCniWu8WkyqgI_ENH/view?usp=sharing)
+
 ![Linguists Project Conceptual View](https://user-images.githubusercontent.com/86444777/219822992-974e45b1-fb9a-4600-90f9-78c37d9c9c89.png)
 
 ## Developer Setup
