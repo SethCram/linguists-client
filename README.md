@@ -5,6 +5,8 @@ Empowers non-technical users with direct database access.
 
 [Read the paper](https://drive.google.com/file/d/1dWXQ8Ih7NHlS9qyRCniWu8WkyqgI_ENH/view?usp=sharing)
 
+![Linguists_Client](https://github.com/SethCram/linguists-client/assets/86444777/79c2105e-dcdd-4af4-8829-227b3336bd5a)
+
 ## Comprehensive conceptual view
 ![Linguists Project Conceptual View](https://user-images.githubusercontent.com/86444777/219822992-974e45b1-fb9a-4600-90f9-78c37d9c9c89.png)
 
